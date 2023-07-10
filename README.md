@@ -6,9 +6,9 @@ This project is a simple web application that generates random tower and crosspa
 
 - Generates a random selection of towers from the game.
 - Allows users to include or exclude heroes from the random selection.
-- Configurable number of towers (between 1 and 20) to be included in the selection.
+- Configurable number of towers to be included in the generation.
 - Adjustable maximum tier (between 3 and 5) for the randomly generated crosspaths.
-- Option to generate "absolute" crosspaths, which prioritize the maximum tier in one path and a tier 2 upgrade in the other path.
+- Option to generate "absolute" crosspaths, which forces the crosspaths to be the maximum tier instead of random number.
 - Displays a neat table with the random selection of towers and their corresponding crosspaths.
 
 ## Installation
