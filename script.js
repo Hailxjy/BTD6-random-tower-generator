@@ -1,4 +1,5 @@
 const heroesCheckbox = document.getElementById("heroes");
+const autoRefreshCheckbox = document.getElementById("autoRefresh");
 const numTowersInput = document.getElementById("numTowers");
 const absoluteCheckbox = document.getElementById("absolute");
 const xpathCheckbox = document.getElementById("X-Path")
@@ -176,13 +177,15 @@ function copyTable() {
 
     copiedTablesContainer.insertBefore(newTable, copiedTablesContainer.firstChild);
 }
-    
+
+if (autoRefreshCheckbox.checked) {
+    heroesCheckbox.addEventListener("change", generateTable);
+    absoluteCheckbox.addEventListener("change", generateTable);
+    xpathCheckbox.addEventListener("change", generateTable);
+    numTowersInput.addEventListener("input", generateTable);
+    maxTierInput.addEventListener("input", generateTable);
+}
 generateButton.addEventListener("click", generateTable);
-heroesCheckbox.addEventListener("change", generateTable);
-absoluteCheckbox.addEventListener("change", generateTable);
-xpathCheckbox.addEventListener("change", generateTable);
-numTowersInput.addEventListener("input", generateTable);
-maxTierInput.addEventListener("input", generateTable);
 
 copyTableButton.addEventListener("click", copyTable);
 generateTable();
