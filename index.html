@@ -20,6 +20,8 @@
         <input type="number" id="maxTier" min="3" max="5" value="5">
         <label for="absolute">Absolute:</label>
         <input type="checkbox" id="absolute" checked>
+        <label for="X-Path">X-Path:</label>
+        <input type="checkbox" id="X-Path">
     </div>
     <div class="button-container">
         <button id="generate">Refresh</button>
@@ -34,6 +36,11 @@
         <tbody>
         </tbody>
     </table>
+    <div class="button-container">
+        <button id="copyTable">Copy Table</button>
+    </div>
+    <div id="copiedTablesContainer"></div>
+
     <script src="script.js"></script>
 </body>
 </html>

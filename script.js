@@ -1,9 +1,12 @@
 const heroesCheckbox = document.getElementById("heroes");
 const numTowersInput = document.getElementById("numTowers");
 const absoluteCheckbox = document.getElementById("absolute");
+const xpathCheckbox = document.getElementById("X-Path")
 const maxTierInput = document.getElementById("maxTier");
 const generateButton = document.getElementById("generate");
 const resultTable = document.getElementById("resultTable");
+const copyTableButton = document.getElementById("copyTable");
+const copiedTable = document.getElementById("copiedTable");
 
 const towers = [
     "Dart Monkey",
@@ -82,7 +85,11 @@ function getTowerType(tower) {
 
 function generateRandomCrosspath(maxTier) {
     let path1, path2;
-    if (absoluteCheckbox.checked) {
+    if (xpathCheckbox.checked) {
+        path1 = "X"
+        path2 = "X"
+    }
+    else if (absoluteCheckbox.checked) {
         path1 = maxTier;
         path2 = 2;
     } else {
@@ -138,10 +145,44 @@ function generateTable() {
     }
 }
 
+function copyTable() {
+    const resultTableBody = resultTable.getElementsByTagName("tbody")[0];
+
+    const lastCopiedTable = copiedTablesContainer.getElementsByTagName("table")[0];
+    if (lastCopiedTable) {
+        const lastCopiedTableBody = lastCopiedTable.getElementsByTagName("tbody")[0];
+        if (lastCopiedTableBody.innerHTML === resultTableBody.innerHTML) {
+            return;
+        }
+    }
+
+    const newTable = document.createElement("table");
+    const newTableHeader = document.createElement("thead");
+    const newTableHeaderRow = document.createElement("tr");
+    const newTableBody = document.createElement("tbody");
+
+    const towerHeader = document.createElement("th");
+    towerHeader.textContent = "Tower";
+    const crosspathHeader = document.createElement("th");
+    crosspathHeader.textContent = "Crosspath";
+
+    newTableHeaderRow.appendChild(towerHeader);
+    newTableHeaderRow.appendChild(crosspathHeader);
+    newTableHeader.appendChild(newTableHeaderRow);
+    newTable.appendChild(newTableHeader);
+
+    newTableBody.innerHTML = resultTableBody.innerHTML;
+    newTable.appendChild(newTableBody);
+
+    copiedTablesContainer.insertBefore(newTable, copiedTablesContainer.firstChild);
+}
+    
 generateButton.addEventListener("click", generateTable);
 heroesCheckbox.addEventListener("change", generateTable);
 absoluteCheckbox.addEventListener("change", generateTable);
+xpathCheckbox.addEventListener("change", generateTable);
 numTowersInput.addEventListener("input", generateTable);
 maxTierInput.addEventListener("input", generateTable);
 
+copyTableButton.addEventListener("click", copyTable);
 generateTable();

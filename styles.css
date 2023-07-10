@@ -26,7 +26,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-button#generate {
+button {
     background-color: #4CAF50;
     color: white;
     padding: 12px 24px;
@@ -39,7 +39,7 @@ button#generate {
     border-radius: 5px;
 }
 
-button#generate:hover {
+button:hover {
     background-color: #45a049;
 }
 
