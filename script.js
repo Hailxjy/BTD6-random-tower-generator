@@ -84,15 +84,14 @@ function generateRandomCrosspath(maxTier) {
     let path1, path2;
     if (absoluteCheckbox.checked) {
         path1 = maxTier;
-        path2 = 2
-    }
-    else {
+        path2 = 2;
+    } else {
         path1 = Math.floor(Math.random() * (maxTier - 2)) + 3;
         path2 = Math.floor(Math.random() * 3);
     }
     const zeroPosition = Math.floor(Math.random() * 3);
     let crosspath = ["0", "0", "0"];
-    crosspath[zeroPosition] = "0";
+    crosspath[zeroPosition] = '<span class="red-zero">0</span>';
     crosspath[(zeroPosition + 1) % 3] = path1.toString();
     crosspath[(zeroPosition + 2) % 3] = path2.toString();
 
